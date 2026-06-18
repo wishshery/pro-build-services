@@ -4,19 +4,36 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
   @apply bg-white text-ink antialiased;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* Reusable button + layout helpers */
+img,
+iframe {
+  max-width: 100%;
+}
+
+@supports (padding: max(0px)) {
+  .safe-top {
+    padding-top: max(0px, env(safe-area-inset-top));
+  }
+  .safe-bottom {
+    padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
+  }
+}
+
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-md bg-brand px-6 py-3 font-semibold text-white transition-colors hover:bg-brand-dark focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2;
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-md bg-brand px-6 py-3 font-semibold text-white transition-colors hover:bg-brand-dark focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 active:bg-brand-dark;
   }
   .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 rounded-md border-2 border-ink px-6 py-3 font-semibold text-ink transition-colors hover:bg-ink hover:text-white focus:outline-none focus:ring-2 focus:ring-ink focus:ring-offset-2;
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-md border-2 border-ink px-6 py-3 font-semibold text-ink transition-colors hover:bg-ink hover:text-white focus:outline-none focus:ring-2 focus:ring-ink focus:ring-offset-2 active:bg-ink active:text-white;
   }
   .container-px {
     @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
@@ -28,7 +45,7 @@ body {
     @apply mb-2 text-sm font-bold uppercase tracking-wider text-brand;
   }
   .input {
-    @apply w-full rounded-md border border-gray-300 px-4 py-2.5 text-sm text-ink shadow-sm focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand;
+    @apply w-full rounded-md border border-gray-300 px-4 py-3 text-base text-ink shadow-sm focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand sm:py-2.5 sm:text-sm;
   }
   .file-input {
     @apply block w-full text-sm text-gray-600 file:mr-4 file:rounded-md file:border-0 file:bg-brand/10 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-brand hover:file:bg-brand/20;

@@ -19,7 +19,7 @@ export default function Navbar() {
     }`
 
   return (
-    <header className="sticky top-0 z-50 border-b border-gray-100 bg-white/95 backdrop-blur">
+    <header className="safe-top sticky top-0 z-50 border-b border-gray-100 bg-white/95 backdrop-blur">
       <nav className="container-px flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
           <span className="flex h-9 w-9 items-center justify-center rounded-md bg-brand font-extrabold text-white">P</span>

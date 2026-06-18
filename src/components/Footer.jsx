@@ -44,7 +44,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="border-t border-white/10">
-        <div className="container-px py-5 text-center text-xs text-gray-500">
+        <div className="container-px safe-bottom py-5 text-center text-xs text-gray-500">
           © {new Date().getFullYear()} Pro Build Services. All rights reserved.
         </div>
       </div>

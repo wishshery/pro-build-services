@@ -35,7 +35,7 @@ export default function Home() {
           alt="Construction site"
           className="absolute inset-0 -z-10 h-full w-full object-cover opacity-30"
         />
-        <div className="container-px py-24 sm:py-32 lg:py-40">
+        <div className="container-px py-20 sm:py-32 lg:py-40">
           <div className="max-w-2xl">
             <p className="eyebrow text-brand-light">Quality You Can Build On</p>
             <h1 className="text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
@@ -46,10 +46,10 @@ export default function Home() {
               craftsmanship — on time and on budget, every time.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link to="/projects" className="btn-primary">View Projects</Link>
+              <Link to="/projects" className="btn-primary w-full sm:w-auto">View Projects</Link>
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-md border-2 border-white px-6 py-3 font-semibold text-white transition-colors hover:bg-white hover:text-ink"
+                className="inline-flex min-h-[44px] w-full items-center justify-center gap-2 rounded-md border-2 border-white px-6 py-3 font-semibold text-white transition-colors hover:bg-white hover:text-ink sm:w-auto"
               >
                 Contact Us
               </Link>
