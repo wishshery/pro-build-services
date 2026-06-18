@@ -6,7 +6,7 @@ function formatDate(d) {
   if (!d) return ''
   const date = new Date(d)
   if (isNaN(date)) return d
-  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long' })
+  return date.toLocaleDateString('en-GB', { year: 'numeric', month: 'long' })
 }
 
 export default function ProjectCard({ project }) {
@@ -20,7 +20,7 @@ export default function ProjectCard({ project }) {
     : project.image || FALLBACK
 
   return (
-    <article className="group flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-shadow hover:shadow-md">
+    <article className="group flex flex-col overflow-hidden rounded-md border border-gray-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg">
       <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
         <img
           src={mainImage}
@@ -29,20 +29,20 @@ export default function ProjectCard({ project }) {
           onError={(e) => { e.currentTarget.src = FALLBACK }}
           className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
-        <span className="absolute left-3 top-3 rounded-full bg-brand px-3 py-1 text-xs font-bold text-white">
+        <span className="absolute left-3 top-3 rounded-md bg-white/95 px-3 py-1 text-xs font-extrabold text-ink shadow-sm">
           {project.category}
         </span>
         {hasBeforeAfter && (
-          <div className="absolute bottom-3 left-3 flex overflow-hidden rounded-md border border-white/70 text-xs font-bold">
+          <div className="absolute bottom-3 left-3 flex overflow-hidden rounded-md border border-white/70 text-xs font-bold shadow-sm">
             <button
               onClick={() => setShowAfter(false)}
-              className={`px-3 py-1 ${!showAfter ? 'bg-white text-ink' : 'bg-black/50 text-white'}`}
+              className={`min-h-[36px] px-3 ${!showAfter ? 'bg-white text-ink' : 'bg-black/60 text-white'}`}
             >
               Before
             </button>
             <button
               onClick={() => setShowAfter(true)}
-              className={`px-3 py-1 ${showAfter ? 'bg-white text-ink' : 'bg-black/50 text-white'}`}
+              className={`min-h-[36px] px-3 ${showAfter ? 'bg-white text-ink' : 'bg-black/60 text-white'}`}
             >
               After
             </button>
@@ -60,11 +60,16 @@ export default function ProjectCard({ project }) {
           {project.location}
         </p>
         <p className="mt-3 flex-1 text-sm leading-relaxed text-gray-600">{project.description}</p>
-        {project.completionDate && (
-          <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-gray-400">
-            Completed {formatDate(project.completionDate)}
-          </p>
-        )}
+        <div className="mt-5 flex items-center justify-between border-t border-gray-100 pt-4">
+          {project.completionDate ? (
+            <p className="text-xs font-bold uppercase tracking-wide text-gray-500">
+              Completed {formatDate(project.completionDate)}
+            </p>
+          ) : (
+            <span />
+          )}
+          <span className="text-xs font-extrabold text-brand">View details</span>
+        </div>
       </div>
     </article>
   )

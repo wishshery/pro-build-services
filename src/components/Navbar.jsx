@@ -5,7 +5,6 @@ const links = [
   { to: '/', label: 'Home', end: true },
   { to: '/services', label: 'Services' },
   { to: '/projects', label: 'Projects' },
-  { to: '/upload', label: 'Upload' },
   { to: '/about', label: 'About' },
   { to: '/contact', label: 'Contact' },
 ]
@@ -14,17 +13,34 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
 
   const linkClass = ({ isActive }) =>
-    `px-1 py-2 text-sm font-semibold transition-colors ${
-      isActive ? 'text-brand' : 'text-ink hover:text-brand'
+    `rounded-md px-3 py-2 text-sm font-semibold transition-colors ${
+      isActive ? 'bg-brand/10 text-brand' : 'text-gray-700 hover:bg-gray-100 hover:text-ink'
     }`
 
   return (
-    <header className="safe-top sticky top-0 z-50 border-b border-gray-100 bg-white/95 backdrop-blur">
+    <header className="safe-top sticky top-0 z-50 border-b border-gray-200 bg-white/95 shadow-sm backdrop-blur">
+      <div className="hidden border-b border-gray-100 bg-ink text-xs font-semibold text-white lg:block">
+        <div className="container-px flex h-9 items-center justify-between">
+          <span>Trusted local construction by owner Sunny Bhatti</span>
+          <div className="flex items-center gap-5 text-gray-200">
+            <a href="tel:07414042828" className="hover:text-brand-light">07414 042828</a>
+            <a href="mailto:info@probuildservices.co.uk" className="hover:text-brand-light">
+              info@probuildservices.co.uk
+            </a>
+          </div>
+        </div>
+      </div>
+
       <nav className="container-px flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
-          <span className="flex h-9 w-9 items-center justify-center rounded-md bg-brand font-extrabold text-white">P</span>
-          <span className="text-lg font-extrabold tracking-tight">
-            Pro Build<span className="text-brand"> Services</span>
+          <span className="flex h-10 w-10 items-center justify-center rounded-md bg-brand font-extrabold text-white shadow-sm">
+            PB
+          </span>
+          <span className="leading-tight">
+            <span className="block text-base font-extrabold tracking-tight sm:text-lg">Pro Build Services</span>
+            <span className="hidden text-xs font-semibold uppercase tracking-wide text-gray-500 sm:block">
+              Construction and Renovation
+            </span>
           </span>
         </Link>
 
@@ -53,8 +69,8 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="border-t border-gray-100 bg-white md:hidden">
-          <div className="container-px flex flex-col py-2">
+        <div className="border-t border-gray-100 bg-white shadow-lg md:hidden">
+          <div className="container-px flex flex-col gap-1 py-3">
             {links.map((l) => (
               <NavLink
                 key={l.to}
@@ -62,12 +78,15 @@ export default function Navbar() {
                 end={l.end}
                 onClick={() => setOpen(false)}
                 className={({ isActive }) =>
-                  `py-3 text-base font-semibold ${isActive ? 'text-brand' : 'text-ink'}`
+                  `rounded-md px-3 py-3 text-base font-semibold ${isActive ? 'bg-brand/10 text-brand' : 'text-ink'}`
                 }
               >
                 {l.label}
               </NavLink>
             ))}
+            <a href="tel:07414042828" className="mt-2 rounded-md bg-ink px-3 py-3 text-center font-bold text-white">
+              Call 07414 042828
+            </a>
           </div>
         </div>
       )}
