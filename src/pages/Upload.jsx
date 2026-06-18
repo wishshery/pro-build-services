@@ -101,7 +101,7 @@ export default function Upload() {
         <div className="container-px flex items-center justify-between py-12 sm:py-16">
           <div>
             <p className="eyebrow">Owner Tools</p>
-            <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl">Upload a Project</h1>
+            <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl">Private Project Upload</h1>
             <p className="mt-3 max-w-2xl text-gray-600">
               Private admin page. Sign in to publish a project - it appears in the
               public gallery instantly. This page is not shown in the site navigation.
