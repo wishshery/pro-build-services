@@ -4,21 +4,23 @@
 
 html {
   scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%; /* stop iOS resizing text on rotate */
   text-size-adjust: 100%;
 }
 
 body {
   @apply bg-white text-ink antialiased;
-  overflow-x: hidden;
-  -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden; /* guard against any accidental horizontal scroll */
+  -webkit-tap-highlight-color: transparent; /* no grey flash on tap */
 }
 
+/* Media never forces the page wider than the screen */
 img,
 iframe {
   max-width: 100%;
 }
 
+/* Respect the iPhone notch / home-indicator safe areas */
 @supports (padding: max(0px)) {
   .safe-top {
     padding-top: max(0px, env(safe-area-inset-top));
@@ -28,6 +30,7 @@ iframe {
   }
 }
 
+/* Reusable button + layout helpers */
 @layer components {
   .btn-primary {
     @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-md bg-brand px-6 py-3 font-semibold text-white transition-colors hover:bg-brand-dark focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 active:bg-brand-dark;
@@ -45,6 +48,7 @@ iframe {
     @apply mb-2 text-sm font-bold uppercase tracking-wider text-brand;
   }
   .input {
+    /* text-base (16px) on phones prevents iOS auto-zoom on focus; smaller on desktop */
     @apply w-full rounded-md border border-gray-300 px-4 py-3 text-base text-ink shadow-sm focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand sm:py-2.5 sm:text-sm;
   }
   .file-input {

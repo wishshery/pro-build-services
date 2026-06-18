@@ -39,7 +39,7 @@ export default function Navbar() {
           <span className="leading-tight">
             <span className="block text-base font-extrabold tracking-tight sm:text-lg">Pro Build Services</span>
             <span className="hidden text-xs font-semibold uppercase tracking-wide text-gray-500 sm:block">
-              Construction and Renovation
+              Construction & Renovation
             </span>
           </span>
         </Link>
